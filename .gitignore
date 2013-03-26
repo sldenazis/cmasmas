@@ -1,0 +1,5 @@
+## Ignoro temporales de vim
+*.swp
+
+## Binarios
+*.bin
