@@ -106,7 +106,7 @@ int main(){
 		}
 	}
 
-	mueve( tablero_inicial, 0, 0 );
+	mueve( tablero_inicial, 0, 0, 0 );
 
 	return 0;
 }
