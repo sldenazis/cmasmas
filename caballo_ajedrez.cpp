@@ -83,12 +83,12 @@ int mueve( bool tablero[8][8], short fila, short columna, int nivel ){
 			}
 		}
 		if ( solucionado != 0 ){
-			if ( validaMovimiento( tablero, fila-2, columna+1 ){
+			if ( validaMovimiento( tablero, fila-2, columna+1 ) ){
 				solucionado = mueve( tablero, fila-2, columna+1, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
-			if ( validaMovimiento( tablero, fila-1, columna+2 ){
+			if ( validaMovimiento( tablero, fila-1, columna+2 ) ){
 				solucionado = mueve( tablero, fila-1, columna+2, nivel );
 			}
 		}
