@@ -19,6 +19,8 @@ bool termineRecorrido( bool tablero[8][8] ){
 	for ( short fila = 0; fila < 8; fila++ ){
 		for ( short columna = 0; columna < 8; columna++ ){
 			if ( tablero[fila][columna] ) { escaques_visitados++; }
+			cout << "Fila: " << fila << ". Columna: " << columna << " ~ ";
+			if ( tablero[fila][columna] ) { cout << " Visitado!" << endl; } else { cout << " No visitado!" << endl; }
 		}
 	}
 
@@ -38,12 +40,15 @@ bool validaMovimiento( bool tablero[8][8], short fila, short columna ){
 		puedo_mover = false;
 	}
 
+	//if ( puedo_mover ){ cout << "Muevo fila " << fila << " columna " << columna << endl; }
+
 	return puedo_mover;
 }
 
 int mueve( bool tablero[8][8], short fila, short columna, int nivel ){
 
 	int solucionado = 1; // no encontre la solucion si no esta en 0
+	int llamado = 0;
 	
 	tablero[fila][columna] = true;
 
@@ -54,41 +59,58 @@ int mueve( bool tablero[8][8], short fila, short columna, int nivel ){
 		cout << "Finalizamos en el nivel " << nivel << "." << endl;
 		return 0;
 	} else {
+		cout << "Nivel " << nivel << ":" << endl;
 		if ( validaMovimiento( tablero, fila+1, columna+2 ) ){
+			/*cout << "    Llamado " << llamado << ":" << endl;
+			llamado++;*/
 			solucionado = mueve( tablero, fila+1, columna+2, nivel );
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila+2, columna+1 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila+2, columna+1, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila+2, columna-1 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila+2, columna-1, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila+1, columna-2 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila+1, columna-2, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila-1, columna-2 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila-1, columna-2, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila-2, columna-1 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila-2, columna-1, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila-2, columna+1 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila-2, columna+1, nivel );
 			}
 		}
 		if ( solucionado != 0 ){
 			if ( validaMovimiento( tablero, fila-1, columna+2 ) ){
+				/*cout << "    Llamado " << llamado << ":" << endl;
+				llamado++;*/
 				solucionado = mueve( tablero, fila-1, columna+2, nivel );
 			}
 		}
@@ -98,7 +120,9 @@ int mueve( bool tablero[8][8], short fila, short columna, int nivel ){
 }
 
 int main(){
+
 	bool tablero_inicial[8][8];
+
 	// Inicializo el tablero en false
 	for ( short fila = 0; fila < 8; fila++ ){
 		for ( short columna = 0; columna < 8; columna++){
